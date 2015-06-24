@@ -47,6 +47,73 @@
     </script>
   </head>
   <body>
+   <script language="javascript" type="text/javascript" src="jquery.js"></script>
+
+         <script>
+
+          function fcrear() {
+
+          $.ajax({     
+             type: 'post',                                 
+             url: 'crearfactura.php',                   
+             data: {},                                     
+            dataType: 'json',                   
+            success: function(data)  {
+              document.getElementById("nofactura").value  = data[0];              
+
+            } 
+
+          });
+
+        }
+		
+		function fagregar() {
+
+          $.ajax({     
+             type: 'post',                                 
+             url: 'agregarfactura.php',                   
+             data: {idp: document.getElementById("u5_input").value,
+					cant: document.getElementById("u8_input").value,
+					fac: document.getElementById("nofactura").value}, 
+                                    
+            dataType: 'json',                   
+            success: function(data)  {
+				    document.getElementById("u18_input").value  = document.getElementById("u18_input").value + document.getElementById("u8_input").value * data[0];    
+					document.getElementById("u20_input").value  = document.getElementById("u18_input").value * (1 - document.getElementById("u20_input").value/100 );    
+						 
+            } 
+
+          });
+
+        }
+		
+		function ffacturar() {
+
+          $.ajax({     
+             type: 'post',                                 
+             url: 'pagarfactura.php',                   
+             data: {sub: document.getElementById("u18_input").value,
+					desc: document.getElementById("u19_input").value,
+					fac: document.getElementById("nofactura").value,
+					tot: document.getElementById("u20_input").value}, 
+                                    
+            dataType: 'json',                   
+            success: function(data)  {
+				    
+            } 
+
+          });
+
+        }
+		
+		
+		
+        </script>
+  
+  <input type="hidden" name="nofactura" value="" id="nofactura">
+
+  
+  
     <div id="base" class="">
 
       <!-- Unnamed (Shape) -->
@@ -95,7 +162,7 @@
 
       <!-- fact_agregar_prod (HTML Button) -->
       <div id="u9" class="ax_html_button" data-label="fact_agregar_prod">
-        <input id="u9_input" type="submit" value="Agregar" disabled/>
+        <input id="u9_input" type="button" value="Agregar" onclick="fagregar()" disabled/>
       </div>
 
       <!-- fact_list_prod (List Box) -->
@@ -106,7 +173,7 @@
 
       <!-- fact_imprimir (HTML Button) -->
       <div id="u11" class="ax_html_button" data-label="fact_imprimir">
-        <input id="u11_input" type="submit" value="Imprimir" disabled/>
+        <input id="u11_input" type="button" value="Imprimir" onclick="ffacturar()" disabled/>
       </div>
 
       <!-- Unnamed (Shape) -->
@@ -375,7 +442,7 @@
 
       <!-- fact_crear (HTML Button) -->
       <div id="u72" class="ax_html_button" data-label="fact_crear">
-        <input id="u72_input" type="submit" value="Crear factura"/>
+        <input id="u72_input" type="button" value="Crear factura" onclick="fcrear()"/>
       </div>
     </div>
   </body>
