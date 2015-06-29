@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
-    <title>empr_visualizar</title>
+    <title>prov_visualizar</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="files/empr_visualizar/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/prov_visualizar/styles.css" type="text/css" rel="stylesheet"/>
     <script src="resources/scripts/jquery-1.7.1.min.js"></script>
     <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
     <script src="resources/scripts/axure/axQuery.js"></script>
@@ -37,7 +37,7 @@
     <script src="resources/scripts/axure/adaptive.js"></script>
     <script src="resources/scripts/axure/tree.js"></script>
     <script src="resources/scripts/axure/init.temp.js"></script>
-    <script src="files/empr_visualizar/data.js"></script>
+    <script src="files/prov_visualizar/data.js"></script>
     <script src="resources/scripts/axure/legacy.js"></script>
     <script src="resources/scripts/axure/viewer.js"></script>
     <script type="text/javascript">
@@ -47,21 +47,43 @@
     </script>
   </head>
   <body>
+    <script language="javascript" type="text/javascript" src="jquery.js"></script>
+    <script> 
+      function filtrar() {
+
+          $.ajax({     
+             type: 'post',                                 
+             url: 'prov_visualizar_query.php',                   
+             data: {idq: document.getElementById("u1_input").value, param: document.getElementById("u56_input")},             
+                                        
+            dataType: 'json',                   
+            success: function(data)  {
+              document.getElementById("u17_input").value  = data[0];              
+              document.getElementById("u8_input").value   = data[1];     
+              document.getElementById("u11_input").value  = data[2];              
+              document.getElementById("u14_input").value  = data[3];              
+              document.getElementById("u20_input").value  = data[4];          
+
+            } 
+
+          });
+    </script>
+
     <div id="base" class="">
 
       <!-- Unnamed (List Box) -->
       <div id="u0" class="ax_list_box">
         <select id="u0_input" size="10">
-        <?php
+          <?php
           $conec = pg_connect('host=localhost port=5432 dbname=eccipos user=postgres password=3cc1.POS') or die('problemas de conexion' .pg_last_error());
-            $query = "SELECT  nombre, Cedula_jurídica
-                      FROM    empresa "; 
+            $query = "SELECT  *
+                      FROM    proveedor "; 
                       
             $result = pg_query($conec,$query) or die('La consulta fallo: ' . pg_last_error());
             
-            echo"<option> Nombre&emsp;&emsp;Cedula_jurídica</option>";
+            echo"<option> Nombre&emsp;&emsp;Cedula_jurídica&emsp;&emsp;Empresa&emsp;&emsp;Correo_contacto&emsp;&emsp;Nombre_Contacto&emsp;&emsp;PaginaWeb</option>";
             while($row = pg_fetch_row($result)){
-              echo"<option>".$row[0]."-".$row[1]."</option>";
+              echo"<option>".$row[0]."-".$row[1]."-".$row[2]."-".$row[3]."-".$row[4]."-".$row[5]."</option>";
 
             }
         ?>
@@ -76,7 +98,7 @@
 
       <!-- Unnamed (HTML Button) -->
       <div id="u2" class="ax_html_button">
-        <input id="u2_input" type="submit" value="Filtrar"/>
+        <input id="u2_input" type="button" value="Filtrar" onclick="filtrar()"/>
       </div>
 
       <!-- Unnamed (Shape) -->
@@ -84,7 +106,7 @@
         <img id="u3_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u4" class="text">
-          <p><span>Empresa</span></p>
+          <p><span>Proveedores</span></p>
         </div>
       </div>
 
@@ -328,7 +350,7 @@
         <img id="u57_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u58" class="text">
-          <p><span>B</span><span>ú</span><span>squeda de</span><span> Empresa</span><span>(s):</span></p>
+          <p><span>B</span><span>ú</span><span>squeda de </span><span>Proveedor</span><span>(</span><span>e</span><span>s):</span></p>
         </div>
       </div>
     </div>

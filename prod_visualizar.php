@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
-    <title>empr_visualizar</title>
+    <title>prod_visualizar</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="files/empr_visualizar/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/prod_visualizar/styles.css" type="text/css" rel="stylesheet"/>
     <script src="resources/scripts/jquery-1.7.1.min.js"></script>
     <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
     <script src="resources/scripts/axure/axQuery.js"></script>
@@ -37,7 +37,7 @@
     <script src="resources/scripts/axure/adaptive.js"></script>
     <script src="resources/scripts/axure/tree.js"></script>
     <script src="resources/scripts/axure/init.temp.js"></script>
-    <script src="files/empr_visualizar/data.js"></script>
+    <script src="files/prod_visualizar/data.js"></script>
     <script src="resources/scripts/axure/legacy.js"></script>
     <script src="resources/scripts/axure/viewer.js"></script>
     <script type="text/javascript">
@@ -49,44 +49,27 @@
   <body>
     <div id="base" class="">
 
+      <!-- agregar (HTML Button) -->
+      <div id="u0" class="ax_html_button" data-label="agregar">
+        <input id="u0_input" type="submit" value="Regresar"/>
+      </div>
+
       <!-- Unnamed (List Box) -->
-      <div id="u0" class="ax_list_box">
-        <select id="u0_input" size="10">
-        <?php
-          $conec = pg_connect('host=localhost port=5432 dbname=eccipos user=postgres password=3cc1.POS') or die('problemas de conexion' .pg_last_error());
-            $query = "SELECT  nombre, Cedula_jurídica
-                      FROM    empresa "; 
-                      
-            $result = pg_query($conec,$query) or die('La consulta fallo: ' . pg_last_error());
-            
-            echo"<option> Nombre&emsp;&emsp;Cedula_jurídica</option>";
-            while($row = pg_fetch_row($result)){
-              echo"<option>".$row[0]."-".$row[1]."</option>";
-
-            }
-        ?>
-
+      <div id="u1" class="ax_list_box">
+        <select id="u1_input" size="2">
         </select>
       </div>
 
-      <!-- user_busq_field (Text Field) -->
-      <div id="u1" class="ax_text_field" data-label="user_busq_field">
-        <input id="u1_input" type="text" value=""/>
-      </div>
-
-      <!-- Unnamed (HTML Button) -->
-      <div id="u2" class="ax_html_button">
-        <input id="u2_input" type="submit" value="Filtrar"/>
-      </div>
-
       <!-- Unnamed (Shape) -->
-      <div id="u3" class="ax_paragraph">
-        <img id="u3_img" class="img " src="resources/images/transparent.gif"/>
+      <div id="u2" class="ax_paragraph">
+        <img id="u2_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
-        <div id="u4" class="text">
-          <p><span>Empresa</span></p>
+        <div id="u3" class="text">
+          <p><span>B</span><span>ú</span><span>squeda de </span><span>Producto</span><span>(s):</span></p>
         </div>
       </div>
+
+      <!-- Unnamed (MasterAdmin) -->
 
       <!-- Unnamed (New Master 1) -->
 
@@ -308,28 +291,38 @@
         </div>
       </div>
 
+      <!-- Unnamed (Shape) -->
+      <div id="u55" class="ax_paragraph">
+        <img id="u55_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u56" class="text">
+          <p><span>Productos</span></p>
+        </div>
+      </div>
+
       <!-- Unnamed (Horizontal Line) -->
-      <div id="u55" class="ax_horizontal_line">
-        <img id="u55_start" class="img " src="resources/images/transparent.gif" alt="u55_start"/>
-        <img id="u55_end" class="img " src="resources/images/transparent.gif" alt="u55_end"/>
-        <img id="u55_line" class="img " src="images/usuario/u2_line.png" alt="u55_line"/>
+      <div id="u57" class="ax_horizontal_line">
+        <img id="u57_start" class="img " src="resources/images/transparent.gif" alt="u57_start"/>
+        <img id="u57_end" class="img " src="resources/images/transparent.gif" alt="u57_end"/>
+        <img id="u57_line" class="img " src="images/producto/u2_line.png" alt="u57_line"/>
+      </div>
+
+      <!-- user_busq_field (Text Field) -->
+      <div id="u58" class="ax_text_field" data-label="user_busq_field">
+        <input id="u58_input" type="text" value=""/>
+      </div>
+
+      <!-- Unnamed (HTML Button) -->
+      <div id="u59" class="ax_html_button">
+        <input id="u59_input" type="submit" value="Filtrar"/>
       </div>
 
       <!-- Unnamed (Droplist) -->
-      <div id="u56" class="ax_droplist">
-        <select id="u56_input">
+      <div id="u60" class="ax_droplist">
+        <select id="u60_input">
           <option value="Nombre">Nombre</option>
-          <option value="Cédula Juridica">Cédula Juridica</option>
+          <option value="Marca">Marca</option>
         </select>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u57" class="ax_paragraph">
-        <img id="u57_img" class="img " src="resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
-        <div id="u58" class="text">
-          <p><span>B</span><span>ú</span><span>squeda de</span><span> Empresa</span><span>(s):</span></p>
-        </div>
       </div>
     </div>
   </body>

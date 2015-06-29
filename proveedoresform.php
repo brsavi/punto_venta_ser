@@ -64,7 +64,9 @@
               document.getElementById("u8_input").value   = data[1];     
               document.getElementById("u25_input").value  = data[2];              
               document.getElementById("u19_input").value  = data[3];              
-              document.getElementById("u11_input").value  = data[4];          
+              document.getElementById("u11_input").value  = data[4];
+              document.getElementById("u14_input").value  = data[5];              
+              document.getElementById("u22_input").value  = data[6];           
 
             } 
 

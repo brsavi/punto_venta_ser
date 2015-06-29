@@ -47,7 +47,136 @@
     </script>
   </head>
   <body>
+    <script language="javascript" type="text/javascript" src="jquery.js"></script>
 
+         <script>
+
+          function rmod() {
+
+          $.ajax({     
+             type: 'post',                                 
+             url: 'roles.php',                   
+             data: {usag:document.getElementById("u82_input").checked , 
+                    usbus:document.getElementById("u84_input").checked ,
+                    usmod:document.getElementById("u86_input").checked ,
+                    usel:document.getElementById("u88_input").checked ,
+
+                    prag:document.getElementById("u72_input").checked ,
+                    prbus:document.getElementById("u74_input").checked ,
+                    prmod:document.getElementById("u76_input").checked ,
+                    prel:document.getElementById("u78_input").checked ,
+
+                    faag:document.getElementById("u92_input").checked ,
+                    fabus:document.getElementById("u94_input").checked ,
+                    famod:document.getElementById("u96_input").checked ,
+                    fael:document.getElementById("u98_input").checked ,
+
+                    empag:document.getElementById("u102_input").checked ,
+                    empbus:document.getElementById("u104_input").checked ,
+                    empmod:document.getElementById("u106_input").checked ,
+                    empel:document.getElementById("u108_input").checked ,
+
+                    proag:document.getElementById("u112_input").checked ,
+                    probus:document.getElementById("u114_input").checked ,
+                    promod:document.getElementById("u116_input").checked ,
+                    proel:document.getElementById("u118_input").checked
+
+                  },                                     
+            dataType: 'json',                   
+            success: function(data)  {
+              document.getElementById("nofactura").value  = data[0];              
+
+            } 
+
+          });
+
+        }
+
+        function rbus() {
+
+          $.ajax({     
+             type: 'post',                                 
+             url: 'roles.php',                   
+             data: {nrol:document.getElementById("u5_input").value 
+                  },                                     
+            dataType: 'json',                   
+            success: function(data)  {
+              var filas = data[0];
+              var i = 1;
+              for (i = 1; i < filas ;i++){
+
+                  switch (data[i]){
+                    case 1:
+                          document.getElementById("u82_input").checked = true;
+                          break;
+                    case 2:      
+                          document.getElementById("u84_input").checked = true;
+                          break;
+                    case 3:      
+                          document.getElementById("u86_input").checked  = true;
+                          break;
+                    case 4:      
+                          document.getElementById("u88_input").checked  = true;
+                          break;
+                    case 5:      
+                          document.getElementById("u72_input").checked = true ;
+                          break;
+                    case 6:      
+                          document.getElementById("u74_input").checked = true ;
+                          break;
+                    case 7:      
+                          document.getElementById("u76_input").checked  = true;
+                          break;
+                    case 8:
+                          document.getElementById("u78_input").checked = true ;
+                          break;
+                    case 9:
+                          document.getElementById("u92_input").checked  = true;
+                          break;
+                    case 10:      
+                          document.getElementById("u94_input").checked = true ;
+                          break;
+                    case 11:
+                          document.getElementById("u96_input").checked = true ;
+                          break;
+                    case 12:
+                          document.getElementById("u98_input").checked  = true;
+                          break;
+                    case 13:      
+                          document.getElementById("u102_input").checked  = true;
+                          break;
+                    case 14:      
+                          document.getElementById("u104_input").checked = true ;
+                          break;
+                    case 15:
+                          document.getElementById("u106_input").checked  = true;
+                          break;
+                    case 16:      
+                          document.getElementById("u108_input").checked  = true;
+                          break;
+                    case 17:      
+                          document.getElementById("u112_input").checked  = true;
+                          break;
+                    case 18:      
+                          document.getElementById("u114_input").checked = true ;
+                          break;
+                    case 19:      
+                          document.getElementById("u116_input").checked = true ;
+                          break;
+                    case 20:     
+                          document.getElementById("u118_input").checked  = true;
+                          break;
+                  }
+
+              }     
+
+            } 
+
+          });
+
+        }
+
+    </script>
     <form action = "roles.php" method = "post" name = "form">
 
     <div id="base" class="">
@@ -98,7 +227,7 @@
 
       <!-- Unnamed (HTML Button) -->
       <div id="u9" class="ax_html_button">
-        <input id="u9_input" type="submit" value="Modificar" name="roles_modificar"/>
+        <input id="u9_input" type="button" value="Modificar" name="roles_modificar" onclick = "rbus()"/>
       </div>
 
       <!-- Unnamed (MasterAdmin) -->

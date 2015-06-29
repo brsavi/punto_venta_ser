@@ -4,7 +4,6 @@ include("./conexion.php");
 $_empresa=1;
 if ($_POST['user_agregar'])	{
 
-	//Hay algunos errores, todavía no sé como jalar el numero correspondiente al rol, me jala el nombre del rol(por eso le puse un 1). No sé porqué no me guarda el segundo apellido.
 	if( $_POST['user_pw'] == $_POST['user_pw2']){
 		$conec = pg_connect("host=localhost port=5432 dbname=eccipos user=postgres password=3cc1.POS") or die("problemas de conexion " .pg_last_error());
 		$query =	"INSERT INTO usuario(password,usuario,empresa,apellido1,apellido2,id_usuario,rol,nombre,estadopassword) 
@@ -32,6 +31,17 @@ if ($_POST['user_modificar'])	{
 	echo "Usuario Modificado";
 	header('Location:./usuarioform.php');
 }
+
+if($_POST['user_restablecer']){
+	echo "Entro a restabkecer contrase&ntilde;as";
+	$conec = pg_connect("host=localhost port=5432 dbname=eccipos user=postgres password=3cc1.POS") or die("problemas de conexion " .pg_last_error());
+	$query = "UPDATE usuario SET password = '$_POST[user_pw]' WHERE id_usuario = '$_POST[user_identificacion]'";
+	pg_query($conec,$query) or die('La consulta fallo: ' . pg_last_error());
+
+	echo "estoy despues de la declaracion";
+	header('Location:./usuarioform.php');
+}
+
 
 
 pg_close($conec);

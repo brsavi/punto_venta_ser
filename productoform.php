@@ -66,6 +66,7 @@
               document.getElementById("u11_input").value  = data[2];              
               document.getElementById("u14_input").value  = data[3];              
               document.getElementById("u20_input").value  = data[4];          
+              document.getElementById("u87_input").value  = data[5];          
 
             } 
 
@@ -464,13 +465,13 @@
           <img id="u85_img" class="img " src="resources/images/transparent.gif"/>
           <!-- Unnamed () -->
           <div id="u86" class="text">
-            <p><span>Agregar/Modificar Producto:</span></p>
+            <p><span>Precio: </span></p>
           </div>
         </div>
 
-        <!-- poducto_precio (Text Field) -->
-        <div id="u86" class="ax_text_field" data-label="prod_precio">
-          <input id="u86_input" type="text" value="" name="prod_precio"/>
+        <!-- nombre_producto (Text Field) -->
+        <div id="u87" class="ax_text_field" data-label="prod_precio">
+          <input id="u87_input" type="text" value="" name="prod_precio"/>
         </div>
 
       </div>
